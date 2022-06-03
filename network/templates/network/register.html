@@ -1,0 +1,68 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+<div class = "card" id = "signIn">
+
+    <fieldset class="card-body">
+        <legend >
+            <h2 class="card-title">Register </h2>
+        
+            <form action="{% url 'register' %}" method="post" class = "card-body">
+                {% csrf_token %} 
+                {% if message %}
+                    <p class="notfound">{{ message }}</p>
+                {% endif %}
+                <div class = "form-group ">
+                    <fieldset>
+                        <legend><h3>Username</h3>
+                            
+                            <input class="form-control" autofocus type="text" name="username" placeholder="Enter your username">
+                        </legend>
+                    </fieldset>
+                </div>
+                <div class="form-group"> 
+                    <fieldset>
+                        <legend><h3>Email address</h3>
+                            <input class="form-control" type="email" name="email" placeholder="Enter your email address">
+                        </legend>
+                    </fieldset>
+                </div>
+                <div class="form-group">          
+                    <fieldset>
+                        <legend><h3>Password</h3>
+                            <input class="form-control" type="password" name="password" placeholder="Enter your password">
+                        </legend>
+                    </fieldset>
+                </div>
+                <div class="form-group">          
+                    <fieldset>
+                        <legend><h3>confirm password</h3>
+                            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                        </legend>
+                    </fieldset>
+                </div>
+            
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Login">
+                
+                </div>
+
+            </form>
+        </legend> 
+    </fieldset>
+    <fieldset>
+        <legend class="card-body"> 
+            <h2 class="card-title">
+                <div>
+                        Already have an account? 
+                    <span>
+                        <a href="{% url 'login' %}" class = "btn-link" id="createaccount">Log In here.</a> 
+                    </span>
+                </div>
+            </h2>
+        </legend>
+    </fieldset>
+
+</div>
+{% endblock %}

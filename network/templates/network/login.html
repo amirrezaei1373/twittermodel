@@ -1,0 +1,47 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+<div class = "card" id = "signIn">    
+    <fieldset class="card-body">
+        <legend >
+            <h2 class="card-title">Sign In </h2>       
+            <form action="{% url 'login' %}" method="post" class = "card-body">
+                {% csrf_token %} 
+                {% if message %}
+                    <p class="notfound">{{ message }}</p>
+                {% endif %}
+                <div class = "form-group ">
+                    <fieldset>
+                        <legend><h3>Username</h3>                            
+                            <input autofocus class="form-control" type="text" name="username" placeholder="Enter your username">
+                        </legend>
+                    </fieldset>
+                </div>                
+                <div class="form-group">          
+                    <fieldset>
+                        <legend><h3>Password</h3>
+                            <input class="form-control" type="password" name="password" placeholder="Enter your password">
+                        </legend>
+                    </fieldset>
+                </div>            
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Login">                
+                </div>
+            </form>
+        </legend> 
+    </fieldset>
+    <fieldset>
+        <legend class="card-body"> 
+            <h2 class="card-title">
+                <div>
+                        Don't have an account? 
+                    <span>
+                        <a href="{% url 'register' %}" class = "btn-link" id="createaccount">Register here.</a> 
+                    </span>
+                </div>
+            </h2>
+        </legend>
+    </fieldset>
+</div>
+{% endblock %}
